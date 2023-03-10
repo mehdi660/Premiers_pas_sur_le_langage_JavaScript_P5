@@ -23,7 +23,26 @@ const image = document.querySelector(".banner-img");
 let counter = 0;
 const slidesImg = slides.length;
 const textPhoto = document.querySelector(".slider-text")
+var dot = document.querySelector(".dot")
 
+arrowLeft.addEventListener("click", () => {
+	counter = counter === 0 ? slidesImg - 1 : counter - 1;
+	image.src = `./assets/images/slideshow/${slides[counter].image}`;
+	textPhoto.innerHTML = slides[counter].tagLine;
+});
+
+arrowRight.addEventListener("click", () => {
+	counter = counter === slidesImg - 1 ? 0 : counter + 1;
+	image.src = `./assets/images/slideshow/${slides[counter].image}`;
+	textPhoto.innerHTML = slides[counter].tagLine;
+});
+
+dot.addEventListener("click", (event) => {
+	const clickedDot = event.target;
+	dot.classList.add("dot_selected")
+	console.log(dot);
+
+})
 
 // arrowLeft.addEventListener("click", () => {
 // 	if (counter === 0) {
@@ -50,17 +69,6 @@ const textPhoto = document.querySelector(".slider-text")
 // 	}
 // })
 
-arrowLeft.addEventListener("click", () => {
-	counter = counter === 0 ? slidesImg - 1 : counter - 1;
-	image.src = `./assets/images/slideshow/${slides[counter].image}`;
-	textPhoto.innerHTML = slides[counter].tagLine;
-});
-
-arrowRight.addEventListener("click", () => {
-	counter = counter === slidesImg - 1 ? 0 : counter + 1;
-	image.src = `./assets/images/slideshow/${slides[counter].image}`;
-	textPhoto.innerHTML = slides[counter].tagLine;
-});
 
 
 
