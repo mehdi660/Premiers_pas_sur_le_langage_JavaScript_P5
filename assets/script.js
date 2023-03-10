@@ -35,10 +35,12 @@ arrowLeft.addEventListener("click", () => {
 });
 
 arrowRight.addEventListener("click", () => {
-	if (counter === 0) {
-		image.src = "./assets/images/slideshow/" + slides[slidesImg + 1].image;
+	if (counter === slidesImg - 1) {
+		image.src = "./assets/images/slideshow/" + slides[0].image;
+		counter = 0
 	} else {
-		console.log("marche pas");
+		image.src = "./assets/images/slideshow/" + slides[counter + 1].image;
+		counter = counter + 1
 	}
 })
 
