@@ -25,32 +25,42 @@ const slidesImg = slides.length;
 const textPhoto = document.querySelector(".slider-text")
 
 
-arrowLeft.addEventListener("click", () => {
-	if (counter === 0) {
-		image.src = "./assets/images/slideshow/" + slides[slidesImg - 1].image;
-		textPhoto.innerHTML = slides[slidesImg - 1].tagLine;
-		counter = slidesImg - 1
-		// textPhoto = slides[textPhoto - 1];
-		// textPhoto.innerHTML = slides[textPhoto - 3].tagLine;
+// arrowLeft.addEventListener("click", () => {
+// 	if (counter === 0) {
+// 		image.src = "./assets/images/slideshow/" + slides[slidesImg - 1].image;
+// 		textPhoto.innerHTML = slides[slidesImg - 1].tagLine;
+// 		counter = slidesImg - 1
 
-	} else {
-		image.src = "./assets/images/slideshow/" + slides[counter - 1].image;
-		textPhoto.innerHTML = slides[counter - 1].tagLine;
-		counter = counter - 1
-	}
+// 	} else {
+// 		image.src = "./assets/images/slideshow/" + slides[counter - 1].image;
+// 		textPhoto.innerHTML = slides[counter - 1].tagLine;
+// 		counter = counter - 1
+// 	}
+// });
+
+// arrowRight.addEventListener("click", () => {
+// 	if (counter === slidesImg - 1) {
+// 		image.src = "./assets/images/slideshow/" + slides[0].image;
+// 		textPhoto.innerHTML = slides[0].tagLine;
+// 		counter = 0
+// 	} else {
+// 		image.src = "./assets/images/slideshow/" + slides[counter + 1].image;
+// 		textPhoto.innerHTML = slides[counter + 1].tagLine;
+// 		counter = counter + 1
+// 	}
+// })
+
+arrowLeft.addEventListener("click", () => {
+	counter = counter === 0 ? slidesImg - 1 : counter - 1;
+	image.src = `./assets/images/slideshow/${slides[counter].image}`;
+	textPhoto.innerHTML = slides[counter].tagLine;
 });
 
 arrowRight.addEventListener("click", () => {
-	if (counter === slidesImg - 1) {
-		image.src = "./assets/images/slideshow/" + slides[0].image;
-		textPhoto.innerHTML = slides[0].tagLine;
-		counter = 0
-	} else {
-		image.src = "./assets/images/slideshow/" + slides[counter + 1].image;
-		textPhoto.innerHTML = slides[counter + 1].tagLine;
-		counter = counter + 1
-	}
-})
+	counter = counter === slidesImg - 1 ? 0 : counter + 1;
+	image.src = `./assets/images/slideshow/${slides[counter].image}`;
+	textPhoto.innerHTML = slides[counter].tagLine;
+});
 
 
 
