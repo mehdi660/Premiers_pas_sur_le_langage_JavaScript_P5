@@ -19,15 +19,27 @@ const slides = [
 
 const arrowLeft = document.querySelector(".arrow_left");
 const arrowRight = document.querySelector(".arrow_right");
-
+const image = document.querySelector(".banner-img");
+let counter = 0;
+const slidesImg = slides.length;
 
 
 arrowLeft.addEventListener("click", () => {
-	console.log("CEST BON");
-})
+	if (counter === 0) {
+		image.src = "./assets/images/slideshow/" + slides[slidesImg - 1].image;
+		counter = slidesImg - 1
+	} else {
+		image.src = "./assets/images/slideshow/" + slides[counter - 1].image;
+		counter = counter - 1
+	}
+});
 
 arrowRight.addEventListener("click", () => {
-	console.log("CEST BON AUSSI");
+	if (counter === 0) {
+		image.src = "./assets/images/slideshow/" + slides[slidesImg + 1].image;
+	} else {
+		console.log("marche pas");
+	}
 })
 
 
