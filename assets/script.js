@@ -22,14 +22,20 @@ const arrowRight = document.querySelector(".arrow_right");
 const image = document.querySelector(".banner-img");
 let counter = 0;
 const slidesImg = slides.length;
+const textPhoto = document.querySelector(".slider-text")
 
 
 arrowLeft.addEventListener("click", () => {
 	if (counter === 0) {
 		image.src = "./assets/images/slideshow/" + slides[slidesImg - 1].image;
+		textPhoto.innerHTML = slides[slidesImg - 1].tagLine;
 		counter = slidesImg - 1
+		// textPhoto = slides[textPhoto - 1];
+		// textPhoto.innerHTML = slides[textPhoto - 3].tagLine;
+
 	} else {
 		image.src = "./assets/images/slideshow/" + slides[counter - 1].image;
+		textPhoto.innerHTML = slides[counter - 1].tagLine;
 		counter = counter - 1
 	}
 });
@@ -37,12 +43,15 @@ arrowLeft.addEventListener("click", () => {
 arrowRight.addEventListener("click", () => {
 	if (counter === slidesImg - 1) {
 		image.src = "./assets/images/slideshow/" + slides[0].image;
+		textPhoto.innerHTML = slides[0].tagLine;
 		counter = 0
 	} else {
 		image.src = "./assets/images/slideshow/" + slides[counter + 1].image;
+		textPhoto.innerHTML = slides[counter + 1].tagLine;
 		counter = counter + 1
 	}
 })
+
 
 
 
