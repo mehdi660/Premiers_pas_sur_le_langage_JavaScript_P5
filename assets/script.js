@@ -23,7 +23,7 @@ const image = document.querySelector(".banner-img");
 let counter = 0;
 const slidesImg = slides.length;
 const textPhoto = document.querySelector(".slider-text")
-var dot = document.querySelector(".dot")
+const dot = document.querySelectorAll(".dot")
 
 arrowLeft.addEventListener("click", () => {
 	counter = counter === 0 ? slidesImg - 1 : counter - 1;
@@ -37,12 +37,27 @@ arrowRight.addEventListener("click", () => {
 	textPhoto.innerHTML = slides[counter].tagLine;
 });
 
-dot.addEventListener("click", (event) => {
-	const clickedDot = event.target;
-	dot.classList.add("dot_selected")
-	console.log(dot);
+const dots = document.querySelectorAll(".dot");
 
-})
+dot.forEach((dot) => {
+	dot.addEventListener("click", (event) => {
+		const clickedDot = event.target;
+
+		// Supprime la classe "dot_selected" de tous les points
+		dots.forEach((dot) => {
+			dot.classList.remove("dot_selected");
+		});
+
+		// Ajoute la classe "dot_selected" à l'élément cliqué
+		clickedDot.classList.add("dot_selected");
+	});
+});
+
+// dot.addEventListener("click", (event) => {
+// 	const clickedDot = event.target;
+// 	clickedDot.classList.add("dot_selected");
+// 	console.log(dot);
+// })
 
 // arrowLeft.addEventListener("click", () => {
 // 	if (counter === 0) {
