@@ -23,35 +23,55 @@ const image = document.querySelector(".banner-img");
 let counter = 0;
 const slidesImg = slides.length;
 const textPhoto = document.querySelector(".slider-text")
-const dot = document.querySelectorAll(".dot")
+const dots = document.querySelectorAll(".dot");
 
 arrowLeft.addEventListener("click", () => {
 	counter = counter === 0 ? slidesImg - 1 : counter - 1;
 	image.src = `./assets/images/slideshow/${slides[counter].image}`;
 	textPhoto.innerHTML = slides[counter].tagLine;
+	updateSlide()
 });
 
 arrowRight.addEventListener("click", () => {
 	counter = counter === slidesImg - 1 ? 0 : counter + 1;
 	image.src = `./assets/images/slideshow/${slides[counter].image}`;
 	textPhoto.innerHTML = slides[counter].tagLine;
+	updateSlide()
 });
 
-const dots = document.querySelectorAll(".dot");
-
-dot.forEach((dot) => {
+dots.forEach((dot, index) => {
 	dot.addEventListener("click", (event) => {
-		const clickedDot = event.target;
-
-		// Supprime la classe "dot_selected" de tous les points
-		dots.forEach((dot) => {
-			dot.classList.remove("dot_selected");
-		});
-
-		// Ajoute la classe "dot_selected" à l'élément cliqué
-		clickedDot.classList.add("dot_selected");
+		counter = index;
+		updateSlide();
 	});
 });
+
+function updateSlide() {
+	image.src = `./assets/images/slideshow/${slides[counter].image}`;
+	textPhoto.innerHTML = slides[counter].tagLine;
+	dots.forEach((dot, index) => {
+		if (index === counter) {
+			dot.classList.add("dot_selected");
+		} else {
+			dot.classList.remove("dot_selected");
+		}
+	});
+}
+
+
+// dots.forEach((dot) => {
+// 	dot.addEventListener("click", (event) => {
+// 		const clickedDot = event.target;
+
+// 		// Supprime la classe "dot_selected" de tous les points
+// 		dots.forEach((dot) => {
+// 			dot.classList.remove("dot_selected");
+// 		});
+
+// 		// Ajoute la classe "dot_selected" à l'élément cliqué
+// 		clickedDot.classList.add("dot_selected");
+// 	});
+// });
 
 // dot.addEventListener("click", (event) => {
 // 	const clickedDot = event.target;
