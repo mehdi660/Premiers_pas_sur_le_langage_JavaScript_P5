@@ -22,7 +22,7 @@ const arrowRight = document.querySelector(".arrow_right");
 const image = document.querySelector(".banner-img");
 let counter = 0;
 const slidesImg = slides.length;
-const textPhoto = document.querySelector(".slider-text")
+const textPhoto = document.querySelector(".slider-text");
 const dots = document.querySelectorAll(".dot");
 
 arrowLeft.addEventListener("click", () => {
@@ -40,11 +40,12 @@ arrowRight.addEventListener("click", () => {
 });
 
 dots.forEach((dot, index) => {
-	dot.addEventListener("click", (event) => {
+	dot.addEventListener("click", () => {
 		counter = index;
 		updateSlide();
 	});
 });
+
 
 function updateSlide() {
 	image.src = `./assets/images/slideshow/${slides[counter].image}`;
@@ -57,6 +58,7 @@ function updateSlide() {
 		}
 	});
 }
+
 
 
 // dots.forEach((dot) => {
