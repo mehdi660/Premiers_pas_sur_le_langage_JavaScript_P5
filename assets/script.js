@@ -36,7 +36,7 @@ arrowRight.addEventListener("click", () => {
 	counter = counter === slidesImg - 1 ? 0 : counter + 1;
 	image.src = `./assets/images/slideshow/${slides[counter].image}`;
 	textPhoto.innerHTML = slides[counter].tagLine;
-	updateSlide()
+	updateSlide();
 });
 
 dots.forEach((dot, index) => {
@@ -50,8 +50,9 @@ dots.forEach((dot, index) => {
 function updateSlide() {
 	image.src = `./assets/images/slideshow/${slides[counter].image}`;
 	textPhoto.innerHTML = slides[counter].tagLine;
-	dots.forEach((dot, index) => {
-		if (index === counter) {
+	dots.forEach((dot, key) => {
+		console.log(key + ',' + counter);
+		if (key === counter) {
 			dot.classList.add("dot_selected");
 		} else {
 			dot.classList.remove("dot_selected");
@@ -61,50 +62,7 @@ function updateSlide() {
 
 
 
-// dots.forEach((dot) => {
-// 	dot.addEventListener("click", (event) => {
-// 		const clickedDot = event.target;
 
-// 		// Supprime la classe "dot_selected" de tous les points
-// 		dots.forEach((dot) => {
-// 			dot.classList.remove("dot_selected");
-// 		});
-
-// 		// Ajoute la classe "dot_selected" à l'élément cliqué
-// 		clickedDot.classList.add("dot_selected");
-// 	});
-// });
-
-// dot.addEventListener("click", (event) => {
-// 	const clickedDot = event.target;
-// 	clickedDot.classList.add("dot_selected");
-// 	console.log(dot);
-// })
-
-// arrowLeft.addEventListener("click", () => {
-// 	if (counter === 0) {
-// 		image.src = "./assets/images/slideshow/" + slides[slidesImg - 1].image;
-// 		textPhoto.innerHTML = slides[slidesImg - 1].tagLine;
-// 		counter = slidesImg - 1
-
-// 	} else {
-// 		image.src = "./assets/images/slideshow/" + slides[counter - 1].image;
-// 		textPhoto.innerHTML = slides[counter - 1].tagLine;
-// 		counter = counter - 1
-// 	}
-// });
-
-// arrowRight.addEventListener("click", () => {
-// 	if (counter === slidesImg - 1) {
-// 		image.src = "./assets/images/slideshow/" + slides[0].image;
-// 		textPhoto.innerHTML = slides[0].tagLine;
-// 		counter = 0
-// 	} else {
-// 		image.src = "./assets/images/slideshow/" + slides[counter + 1].image;
-// 		textPhoto.innerHTML = slides[counter + 1].tagLine;
-// 		counter = counter + 1
-// 	}
-// })
 
 
 
